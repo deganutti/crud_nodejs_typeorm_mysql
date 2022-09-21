@@ -1,4 +1,4 @@
-import { Entity, Column, CreateDateColumn, PrimaryColumn, ManyToOne, JoinColumn } from "typeorm";
+import { Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryColumn, ManyToOne, JoinColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Pessoas } from "./Pessoas";
 
@@ -36,7 +36,10 @@ export class PessoasEndereco {
     uf: string;
 
     @CreateDateColumn()
-    created_at: Date;
+    created_at:Date;
+
+    @UpdateDateColumn()
+    updated_at:Date;
 
     constructor() {
         if (!this.id) {
