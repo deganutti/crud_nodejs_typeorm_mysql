@@ -29,6 +29,11 @@ export class CreatePessoasEnderecos1640830507123 implements MigrationInterface {
                         isNullable: false,
                     },
                     {
+                        name: "numero",
+                        type: "varchar(10)",
+                        isNullable: false,
+                    },
+                    {
                         name: "bairro",
                         type: "varchar",
                         isNullable: false,
@@ -45,7 +50,7 @@ export class CreatePessoasEnderecos1640830507123 implements MigrationInterface {
                     },
                     {
                         name: "uf",
-                        type: "varchar(3)",
+                        type: "varchar(20)",
                         isNullable: false,
                     },
                     {

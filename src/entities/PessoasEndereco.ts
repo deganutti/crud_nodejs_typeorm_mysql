@@ -21,6 +21,9 @@ export class PessoasEndereco {
     endereco: string;
 
     @Column()
+    numero: string;
+
+    @Column()
     bairro: string;
 
     @Column()
