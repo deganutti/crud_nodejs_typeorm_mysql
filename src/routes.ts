@@ -10,6 +10,7 @@ import { UpdatePessoasController } from "./controllers/UpdatePessoasController";
  * Dados
  */
 import { CreatePessoasDadosController } from "./controllers/CreatePessoasDadosController";
+import { GetAllPessoasDadosController } from "./controllers/GetAllPessoasDadosController";
 
 /**
  * Endereço
@@ -30,6 +31,7 @@ routes.delete("/pessoas/:id_pessoa", new DeletePessoasController().handle);
  * Dados - Documentos
  */
 
+routes.get("/pessoas/dados", new GetAllPessoasDadosController().handle);
 routes.post("/pessoas/dados", new CreatePessoasDadosController().handle);
 
 /**
