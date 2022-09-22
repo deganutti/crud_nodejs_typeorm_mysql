@@ -12,10 +12,10 @@ export class PessoasSituacao {
 
     @ManyToOne(() => Pessoas)
     @JoinColumn({name:"id_pessoa"})
-    pessoa_situacao: Pessoas;
+    pessoas_situacao: Pessoas;
 
     @Column()
-    situacao: boolean;
+    situacao: string;
 
     @CreateDateColumn()
     created_at:Date;

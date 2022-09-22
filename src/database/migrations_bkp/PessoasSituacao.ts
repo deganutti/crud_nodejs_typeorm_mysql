@@ -8,17 +8,17 @@ export class PessoasSituacao1663770626885 implements MigrationInterface {
                   columns: [
                     {
                         name: "id",
-                        type: "int",
+                        type: "varchar",
                         isPrimary: true,
                         generationStrategy: 'uuid',
                     },
                     {
                         name: "id_pessoa",
-                        type: "int", 
+                        type: "varchar", 
                     },
                     {
                         name: "situacao",
-                        type: "boolean",
+                        type: "int",
                     },
                   ],
                    foreignKeys: [

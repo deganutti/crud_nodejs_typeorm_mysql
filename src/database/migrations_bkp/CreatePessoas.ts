@@ -9,7 +9,7 @@ export class CreatePessoas1640821218643 implements MigrationInterface {
                 columns:[
                     {
                         name:"id_pessoa",
-                        type:"int",
+                        type:"varchar",
                         isPrimary:true,
                         generationStrategy: 'uuid',
                     }, 
@@ -21,8 +21,7 @@ export class CreatePessoas1640821218643 implements MigrationInterface {
                     }, 
                     {
                         name:"fantasia",
-                        type:"varchar(150)",
-                        isNullable: false,
+                        type:"varchar(150)", 
                     }, 
                     {
                         name:"ie",

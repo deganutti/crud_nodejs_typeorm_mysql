@@ -1,36 +1,29 @@
-import { Entity, Column, CreateDateColumn,UpdateDateColumn, PrimaryColumn } from "typeorm";
-import {v4 as uuid} from "uuid"; 
+import { Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryColumn } from "typeorm";
+import { v4 as uuid } from "uuid";
 //import { PessoasEndereco } from "./PessoasEndereco";
 
 @Entity("pessoas")
-export class Pessoas{
+export class Pessoas {
     @PrimaryColumn()
-    id_pessoa:string;
+    id_pessoa: string;
 
     @Column()
-    razao:string;
+    nome: string;
 
     @Column()
-    fantasia:string;
+    apelido: string;
 
     @Column()
-    ie:string;
-
-    @Column()
-    cnpj:string;
-
-    @Column()
-    tipo:string;
+    nacimento: Date;
 
     @CreateDateColumn()
-    created_at:Date;
+    created_at: Date;
 
     @UpdateDateColumn()
-    updated_at:Date;
+    updated_at: Date;
 
-  
-    constructor(){
-        if(!this.id_pessoa){
+    constructor() {
+        if (!this.id_pessoa) {
             this.id_pessoa = uuid();
         }
     }

@@ -1,30 +1,24 @@
 import { getRepository } from "typeorm";
 import { Pessoas } from "../entities/Pessoas";
 type PessoasRequest = {
-    razao: string;
-    fantasia: string;
-    ie: string;
-    cnpj: string;
-    tipo: string;
+    nome: string;
+    apelido: string;
+    nacimento: Date;
 }
 
-
 export class CreatePessoasService {
-    async execute({ razao, fantasia, ie, cnpj, tipo }: PessoasRequest): Promise<Pessoas|Error> {
+    async execute({ nome, apelido, nacimento }: PessoasRequest): Promise<Pessoas | Error> {
         const repo = getRepository(Pessoas);
-
-        if(await repo.findOne({cnpj})){
-            return new Error("CNPJ já cadastrado em nossa base de dados!");
-        }
-
         const pessoas = repo.create({
-            razao,
-            fantasia,
-            ie,
-            cnpj,
-            tipo,
+            nome,
+            apelido,
+            nacimento
         });
-        await repo.save(pessoas);
+        try {
+            await repo.save(pessoas);
+        } catch (e) {
+            return new Error("Erro ao cadastrar nova pessoa " + (e as Error).message);
+        }
         return pessoas;
     }
 }

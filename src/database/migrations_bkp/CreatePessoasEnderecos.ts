@@ -9,13 +9,13 @@ export class CreatePessoasEnderecos1640830507123 implements MigrationInterface {
                 columns: [
                     {
                         name: "id_endereco",
-                        type: "int",
+                        type: "varchar",
                         isPrimary: true,
                         generationStrategy: 'uuid',
                     },
                     {
                         name: "id_pessoa",
-                        type: "int",
+                        type: "varchar",
                         isPrimary: true,
                     },
                     {
