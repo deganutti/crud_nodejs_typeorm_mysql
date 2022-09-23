@@ -4,10 +4,20 @@ import { CreatePessoasEnderecoService } from "../services/CreatePessoasEnderecoS
 export class CreatePessoasEnderecoController {
     async handle(request: Request, response: Response) {
         const { id_pessoa } = request.params;
-        const { cep, endereco, bairro, complemento, cidade, uf } = request.body;
+        const { cep, tipo_logradouro, logradouro, numero, bairro, complemento, cidade, estado } = request.body;
 
         const service = new CreatePessoasEnderecoService();
-        const result = await service.execute({ cep, endereco, bairro, complemento, cidade, uf, id_pessoa });
+        const result = await service.execute({
+            cep,
+            tipo_logradouro,
+            logradouro,
+            numero,
+            bairro,
+            complemento,
+            cidade,
+            estado,
+            id_pessoa
+        });
 
         if (result instanceof Error) {
             return response.status(400).json(result.message);

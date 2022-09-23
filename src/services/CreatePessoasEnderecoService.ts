@@ -1,18 +1,20 @@
 import { getRepository } from "typeorm";
 import { PessoasEndereco } from "../entities/PessoasEndereco";
 type PessoasEnderecoRequest = {
-    cep:string;
-    endereco:string;
-    bairro:string;
-    complemento:string;
-    cidade:string;
-    uf:string;
-    id_pessoa:string;
+    cep: string;
+    tipo_logradouro: string;
+    logradouro: string;
+    numero: string;
+    bairro: string;
+    complemento: string;
+    cidade: string;
+    estado: string;
+    id_pessoa: string;
 }
 
 
 export class CreatePessoasEnderecoService {
-    async execute({ cep, endereco, bairro, complemento, cidade, uf, id_pessoa }: PessoasEnderecoRequest): Promise<PessoasEndereco|Error> {
+    async execute({ cep, tipo_logradouro, logradouro, numero, bairro, complemento, cidade, estado, id_pessoa }: PessoasEnderecoRequest): Promise<PessoasEndereco | Error> {
         const repo = getRepository(PessoasEndereco);
 
         /*
@@ -23,11 +25,13 @@ export class CreatePessoasEnderecoService {
         */
         const pessoas_endereco = repo.create({
             cep,
-            endereco,
+            tipo_logradouro,
+            logradouro,
+            numero,
             bairro,
             complemento,
             cidade,
-            uf,
+            estado,
             id_pessoa
         });
         await repo.save(pessoas_endereco);

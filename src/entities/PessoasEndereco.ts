@@ -2,32 +2,35 @@ import { Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryColumn, Many
 import { v4 as uuid } from "uuid";
 import { Pessoas } from "./Pessoas";
 
-@Entity("pessoas_endereco")
+@Entity("pessoasendereco")
 export class PessoasEndereco {
     @PrimaryColumn()
     id: string;
 
     @Column()
-    id_pessoa:string;
+    id_pessoa: string;
 
     @ManyToOne(() => Pessoas)
-    @JoinColumn({name:"id_pessoa"})
+    @JoinColumn({ name: "id_pessoa" })
     pessoas_endereco: Pessoas;
 
     @Column()
     cep: string;
 
     @Column()
-    endereco: string;
+    tipo_logradouro: string;
+
+    @Column()
+    logradouro: string;
 
     @Column()
     numero: string;
 
     @Column()
-    bairro: string;
+    complemento: string;
 
     @Column()
-    complemento: string;
+    bairro: string;
 
     @Column()
     cidade: string;
@@ -36,10 +39,10 @@ export class PessoasEndereco {
     uf: string;
 
     @CreateDateColumn()
-    created_at:Date;
+    created_at: Date;
 
     @UpdateDateColumn()
-    updated_at:Date;
+    updated_at: Date;
 
     constructor() {
         if (!this.id) {

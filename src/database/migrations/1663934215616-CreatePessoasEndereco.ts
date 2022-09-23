@@ -16,28 +16,23 @@ export class CreatePessoasEndereco1663934215616 implements MigrationInterface {
                     {
                         name: "id_pessoa",
                         type: "varchar",
-                        isNullable: false,
                         isPrimary: true,
                     },
                     {
                         name: "cep",
                         type: "varchar(10)",
-                        isNullable: false,
                     },
                     {
                         name: "tipo_logradouro",
                         type: "varchar(20)",
-                        isNullable: false,
                     },
                     {
                         name: "logradouro",
                         type: "varchar(200)",
-                        isNullable: false,
                     },
                     {
                         name: "numero",
                         type: "varchar(10)",
-                        isNullable: false,
                     },
                     {
                         name: "complemento",
@@ -47,17 +42,24 @@ export class CreatePessoasEndereco1663934215616 implements MigrationInterface {
                     {
                         name: "bairro",
                         type: "varchar(200)",
-                        isNullable: false,
                     },
                     {
                         name: "cidade",
                         type: "varchar(200)",
-                        isNullable: false,
                     },
                     {
                         name: "estado",
                         type: "varchar(100)",
-                        isNullable: false,
+                    },
+                    {
+                        name: "created_at",
+                        type: "timestamp",
+                        default: "current_timestamp"
+                    },
+                    {
+                        name: "updated_at",
+                        type: "timestamp",
+                        default: "current_timestamp"
                     }
                 ],
                 foreignKeys: [
