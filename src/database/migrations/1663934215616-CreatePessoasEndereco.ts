@@ -1,21 +1,22 @@
 import { MigrationInterface, QueryRunner, Table } from "typeorm";
 
-export class CreatePessoasEnderecos1640830507123 implements MigrationInterface {
+export class CreatePessoasEndereco1663934215616 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(
             new Table({
-                name: "pessoas_endereco",
+                name: "pessoasendereco",
                 columns: [
                     {
                         name: "id_endereco",
                         type: "varchar",
                         isPrimary: true,
-                        generationStrategy: 'uuid',
+                        generationStrategy: "uuid"
                     },
                     {
                         name: "id_pessoa",
                         type: "varchar",
+                        isNullable: false,
                         isPrimary: true,
                     },
                     {
@@ -24,8 +25,13 @@ export class CreatePessoasEnderecos1640830507123 implements MigrationInterface {
                         isNullable: false,
                     },
                     {
-                        name: "endereco",
-                        type: "varchar",
+                        name: "tipo_logradouro",
+                        type: "varchar(20)",
+                        isNullable: false,
+                    },
+                    {
+                        name: "logradouro",
+                        type: "varchar(200)",
                         isNullable: false,
                     },
                     {
@@ -34,52 +40,44 @@ export class CreatePessoasEnderecos1640830507123 implements MigrationInterface {
                         isNullable: false,
                     },
                     {
-                        name: "bairro",
-                        type: "varchar",
-                        isNullable: false,
+                        name: "complemento",
+                        type: "varchar(200)",
+                        isNullable: true,
                     },
                     {
-                        name: "complemento",
-                        type: "varchar",
+                        name: "bairro",
+                        type: "varchar(200)",
                         isNullable: false,
                     },
                     {
                         name: "cidade",
-                        type: "varchar",
+                        type: "varchar(200)",
                         isNullable: false,
                     },
                     {
-                        name: "uf",
-                        type: "varchar(20)",
+                        name: "estado",
+                        type: "varchar(100)",
                         isNullable: false,
-                    },
-                    {
-                        name: "created_at",
-                        type: "timestamp",
-                        default: "now()"
-                    },
-                    {
-                        name: "updated_at",
-                        type: "timestamp",
-                        default: "now()"
                     }
                 ],
                 foreignKeys: [
                     {
-                      name: "fk_pessoa_id",
-                      referencedTableName: "pessoas",
-                      referencedColumnNames: ["id_pessoa"],
-                      columnNames: ["id_pessoa"],
-                      onDelete: "CASCADE",
-                      onUpdate: "CASCADE"
+                        name: "fk_pessoa_id_enderecos",
+                        referencedTableName: "pessoas",
+                        referencedColumnNames: ["id_pessoa"],
+                        columnNames: ["id_pessoa"],
+                        onDelete: "CASCADE",
+                        onUpdate: "CASCADE"
                     }
-                  ]
+                ]
+
             })
         );
+
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable("pessoas_endereco");
+        await queryRunner.dropTable("pessoasendereco");
     }
 
 }

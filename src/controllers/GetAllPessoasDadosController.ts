@@ -6,9 +6,9 @@ export class GetAllPessoasDadosController {
 
         const service = new GetAllPessoasDadosService();
 
-        const pessoas = await service.execute();
+        const pessoasDados = await service.execute();
 
-        return response.json(pessoas);
+        return response.json(pessoasDados);
     }
 
 }

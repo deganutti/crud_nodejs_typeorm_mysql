@@ -1,4 +1,4 @@
-import { Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryColumn, ManyToOne, JoinColumn, Unique } from "typeorm";
+import { Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryColumn, ManyToOne, JoinColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Pessoas } from "./Pessoas";
 //import { PessoasEndereco } from "./PessoasEndereco";
@@ -9,14 +9,15 @@ export class PessoasDados {
     id_dados: string;
 
     @PrimaryColumn()
+    @Column()
+    id_pessoa: string;
+
     @ManyToOne(() => Pessoas)
     @JoinColumn({ name: "id_pessoa" })
-    id_pessoa: Pessoas;
-    // id_pessoa_dados: string;
+    pessoasdados: Pessoas;
 
     @Column()
     rg: string;
-
 
     @Column()
     cpf: string;
@@ -26,8 +27,6 @@ export class PessoasDados {
 
     @UpdateDateColumn()
     updated_at: Date;
-
-
 
 
     constructor() {

@@ -2,16 +2,14 @@ import { getRepository } from "typeorm";
 import { Pessoas } from "../entities/Pessoas";
 type PessoasUpdateRequest = {
     id_pessoa: string;
-    razao: string;
-    fantasia: string;
-    ie: string;
-    cnpj: string;
-    tipo: string;
+    nome: string;
+    apelido: string;
+    nacimento: Date;
 }
 
 
 export class UpdatePessoasService {
-    async execute({ id_pessoa, razao, fantasia, ie, cnpj, tipo }: PessoasUpdateRequest): Promise<Pessoas | Error> {
+    async execute({ id_pessoa, nome, apelido, nacimento }: PessoasUpdateRequest): Promise<Pessoas | Error> {
         const repo = getRepository(Pessoas);
 
         const pessoa = await repo.findOne(id_pessoa);
@@ -22,12 +20,9 @@ export class UpdatePessoasService {
 
 
         // pessoa.id_pessoa = pessoa.id_pessoa;
-        pessoa.razao = razao ? razao : pessoa.razao;
-        pessoa.fantasia = fantasia ? fantasia : pessoa.fantasia;
-        pessoa.ie = ie ? ie : pessoa.ie;
-        pessoa.cnpj = cnpj ? cnpj : pessoa.cnpj;
-        pessoa.tipo = tipo ? tipo : pessoa.tipo;
-
+        pessoa.nome = nome ? nome : pessoa.nome;
+        pessoa.apelido = apelido ? apelido : pessoa.apelido;
+        pessoa.nacimento = nacimento ? nacimento : pessoa.nacimento;
         await repo.save(pessoa);
 
         return pessoa;

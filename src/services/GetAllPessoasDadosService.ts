@@ -4,10 +4,10 @@ import { PessoasDados } from "../entities/PessoasDados";
 export class GetAllPessoasDadosService {
     async execute() {
         const repo = getRepository(PessoasDados);
-        const pessoasdados = await repo.find({
-            //   relations: ['pessoasdados'],
+        const pessoasDados = await repo.find({
+            relations: ['pessoasdados'],
         });
-        return pessoasdados;
+        return pessoasDados;
         //console.log("Implementations");
     }
 }
