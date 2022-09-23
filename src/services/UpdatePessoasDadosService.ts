@@ -12,7 +12,7 @@ export class UpdatePessoasDadosService {
     async execute({ id_dados, id_pessoa, rg, cpf }: PessoasDadosUpdateRequest): Promise<PessoasDados | Error> {
         const repo = getRepository(PessoasDados);
 
-        const pessoa = await repo.findOne(id_pessoa);
+        const pessoa = await repo.findOne(id_dados);
 
         if (!pessoa) {
             return new Error("Cadastro não esta em nossa base de dados!");

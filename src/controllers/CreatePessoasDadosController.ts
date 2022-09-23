@@ -3,8 +3,8 @@ import { CreatePessoasDadosService } from "../services/CreatePessoasDadosService
 
 export class CreatePessoasDadosController {
     async handle(request: Request, response: Response) {
-        // const { id_pessoa_dados } = request.params;
-        const { rg, cpf, id_pessoa } = request.body;
+        const { id_pessoa } = request.params;
+        const { rg, cpf } = request.body;
 
         const service = new CreatePessoasDadosService();
         const result = await service.execute({

@@ -11,6 +11,8 @@ import { UpdatePessoasController } from "./controllers/UpdatePessoasController";
  */
 import { CreatePessoasDadosController } from "./controllers/CreatePessoasDadosController";
 import { GetAllPessoasDadosController } from "./controllers/GetAllPessoasDadosController";
+import { DeletePessoasDadosController } from "./controllers/DeletePessoasDadosController";
+import { UpdatePessoasDadosController } from "./controllers/UpdatePessoasDadosController";
 
 /**
  * Endereço
@@ -32,7 +34,9 @@ routes.delete("/pessoas/:id_pessoa", new DeletePessoasController().handle);
  */
 
 routes.get("/pessoas/dados", new GetAllPessoasDadosController().handle);
-routes.post("/pessoas/dados", new CreatePessoasDadosController().handle);
+routes.post("/pessoas/dados/:id_pessoa", new CreatePessoasDadosController().handle);
+routes.put("/pessoas/dados/:id_dados", new UpdatePessoasDadosController().handle);
+routes.delete("/pessoas/dados/:id_dados", new DeletePessoasDadosController().handle);
 
 /**
  * Endereço
