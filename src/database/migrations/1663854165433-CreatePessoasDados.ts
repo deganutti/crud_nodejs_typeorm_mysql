@@ -22,7 +22,6 @@ export class CreatePessoasDados1663854165433 implements MigrationInterface {
                     {
                         name: "rg",
                         type: "varchar(15)",
-
                         isNullable: true,
                     },
                     {

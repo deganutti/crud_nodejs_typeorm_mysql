@@ -27,6 +27,12 @@ export class CreatePessoas1663848176962 implements MigrationInterface {
                         type: "date"
                     },
                     {
+                        name: "email",
+                        type: "varchar(100)",
+                        isUnique: true,
+                        isPrimary: true,
+                    },
+                    {
                         name: "created_at",
                         type: "timestamp",
                         default: "current_timestamp"

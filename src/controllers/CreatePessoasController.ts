@@ -3,13 +3,14 @@ import { CreatePessoasService } from "../services/CreatePessoasService";
 
 export class CreatePessoasController {
     async handle(request: Request, response: Response) {
-        const { nome, apelido, nacimento } = request.body;
+        const { nome, apelido, nacimento , email} = request.body;
 
         const service = new CreatePessoasService();
         const result = await service.execute({
             nome,
             apelido,
-            nacimento
+            nacimento,
+            email
         });
 
         if (result instanceof Error) {

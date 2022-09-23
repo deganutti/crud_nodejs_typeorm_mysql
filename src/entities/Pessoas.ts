@@ -1,4 +1,4 @@
-import { Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryColumn } from "typeorm";
+import { Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryColumn,Unique } from "typeorm";
 import { v4 as uuid } from "uuid";
 //import { PessoasEndereco } from "./PessoasEndereco";
 
@@ -15,6 +15,11 @@ export class Pessoas {
 
     @Column()
     nacimento: Date;
+
+    @PrimaryColumn()
+    email: string;
+
+   // @Unique(email)
 
     @CreateDateColumn()
     created_at: Date;

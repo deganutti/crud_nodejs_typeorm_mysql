@@ -4,20 +4,27 @@ type PessoasRequest = {
     nome: string;
     apelido: string;
     nacimento: Date;
+    email: string;
 }
 
 export class CreatePessoasService {
-    async execute({ nome, apelido, nacimento }: PessoasRequest): Promise<Pessoas | Error> {
+    async execute({ nome, apelido, nacimento, email }: PessoasRequest): Promise<Pessoas | Error> {
+
         const repo = getRepository(Pessoas);
         const pessoas = repo.create({
             nome,
             apelido,
-            nacimento
+            nacimento,
+            email
+            /**
+             * Email é unique key
+             */
         });
         try {
             await repo.save(pessoas);
         } catch (e) {
-            return new Error("Erro ao cadastrar nova pessoa " + (e as Error).message);
+            console.error(e);
+            return new Error("Email já cadastrado!");
         }
         return pessoas;
     }

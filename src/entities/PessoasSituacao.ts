@@ -1,21 +1,21 @@
-import { Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryColumn, ManyToOne, JoinColumn, Unique } from "typeorm";
+import { Entity, Column, CreateDateColumn, UpdateDateColumn, PrimaryColumn, ManyToOne, JoinColumn, Unique, OneToOne } from "typeorm";
 import { v4 as uuid } from "uuid";
 import { Pessoas } from "./Pessoas";
 
-@Entity("pessoas_situcao")
+@Entity("pessoassituacao")
 export class PessoasSituacao {
     @PrimaryColumn()
-    id: string;
+    id_situacao: string;
 
     @Column()
     id_pessoa:string;
 
-    @ManyToOne(() => Pessoas)
+    @OneToOne(() => Pessoas)
     @JoinColumn({name:"id_pessoa"})
-    pessoas_situacao: Pessoas;
+    pessoassituacao: Pessoas;
 
     @Column()
-    situacao: string;
+    situacao: boolean;
 
     @CreateDateColumn()
     created_at:Date;
@@ -24,8 +24,8 @@ export class PessoasSituacao {
     updated_at:Date;
 
     constructor() {
-        if (!this.id) {
-            this.id = uuid();
+        if (!this.id_situacao) {
+            this.id_situacao = uuid();
         }
     }
 }
