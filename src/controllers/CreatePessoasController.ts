@@ -1,9 +1,11 @@
 import { Request, Response } from "express";
 import { CreatePessoasService } from "../services/CreatePessoasService";
+import { CreateTableErrorLogController } from "./CreateTableErrorLogController";
+
 
 export class CreatePessoasController {
     async handle(request: Request, response: Response) {
-        const { nome, apelido, nacimento , email} = request.body;
+        const { nome, apelido, nacimento, email } = request.body;
 
         const service = new CreatePessoasService();
         const result = await service.execute({

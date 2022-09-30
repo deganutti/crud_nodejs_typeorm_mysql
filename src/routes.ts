@@ -1,5 +1,10 @@
 import { Router } from "express";
 /**
+ * Log
+ */
+
+import { CreateTableErrorLogController } from "./controllers/CreateTableErrorLogController";
+/**
  * Pessoas
 */
 import { CreatePessoasController } from "./controllers/CreatePessoasController";
@@ -30,11 +35,21 @@ import { CreatePessoasSituacaoController } from "./controllers/CreatePessoasSitu
 
 
 const routes = Router();
+/**
+ * Error log
+ */
+routes.post("/log",new CreateTableErrorLogController().handle);
+
+
+
+/**
+ * Pessoas
+ */
 
 routes.get("/pessoas", new GetAllPessoasController().handle);
 routes.post("/pessoas", new CreatePessoasController().handle);
 routes.put("/pessoas/:id_pessoa", new UpdatePessoasController().handle);
-routes.delete("/pessoas/:id_pessoa", new DeletePessoasController().handle);
+routes.delete("/pessoas", new DeletePessoasController().handle);
 
 /**
  * Dados - Documentos
